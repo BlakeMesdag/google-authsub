@@ -109,9 +109,9 @@ describe GoogleAuthSub do
       @authsub.request_url.to_s.should == @valid_secure_session_url
      end
 
-    it 'should raise an error if the scope URL is not a full path' do
-      @authsub.scope = "www.google.com/calendar/feeds"
-      lambda { @authsub.request_url }.should raise_error(AuthSubError)
+    it 'should allow multiple scopes' do
+      @authsub.scope = "www.google.com/calendar/feeds www.google.com/base/feeds"
+      lambda { @authsub.request_url }.should_not raise_error(AuthSubError)
     end
     
     it "should raise an error if the next_url is not a full path" do

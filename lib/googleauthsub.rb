@@ -30,8 +30,8 @@ require 'cgi'
 #
 module GData
   
-    GOOGLE_HOST_URL = "www.google.com"
-    GOOGLE_AUTHSUB_BASE_PATH = "/accounts"
+    GOOGLE_HOST_URL = "accounts.google.com"
+    GOOGLE_AUTHSUB_BASE_PATH = "/ServiceLogin"
     GOOGLE_AUTHSUB_REQUEST_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubRequest"
     GOOGLE_AUTHSUB_SESSION_TOKEN_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubSessionToken"
     GOOGLE_AUTHSUB_REVOKE_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubRevokeToken"
@@ -97,7 +97,6 @@ class GoogleAuthSub
   # This returns a URI::HTTPS object which contains the Google url to request a token from.
   def request_url
      raise AuthSubError, "Invalid next URL: #{@next_url}" if !full_url?(@next_url)
-     raise AuthSubError, "Invalid scope URL: #{@scope}" if !full_url?(@scope)
      query = "next=" << @next_url << "&scope=" << @scope << "&session="<<
              (session_token? ? '1' : '0')<< "&secure="<< (secure_token? ? '1' : '0')
      query = URI.encode(query)
@@ -224,7 +223,7 @@ class GoogleAuthSub
     if method.superclass != Net::HTTPRequest
       raise AuthSubError, "method must be a Net::HTTPRequest subclass (GET POST PUT DELETE). #{method} received."
     end
-    request = method.new(url.path)
+    request = method.new(url.path + "?" + url.query.to_s)
     request['Authorization'] = authorization_header(request, url)
     connection =  Net::HTTP.new(url.host, url.port)
     connection.use_ssl= (url.scheme == 'https')
@@ -258,7 +257,7 @@ class GoogleAuthSub
     # First check if it is a bad uri
     begin
       u = URI.parse(url)
-    rescue URI.InvalidURIError
+    rescue URI::InvalidURIError
       return false
     end
     return false if u.scheme.nil? || u.host.nil? || u.path.nil?
