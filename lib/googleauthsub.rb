@@ -31,7 +31,7 @@ require 'cgi'
 module GData
   
     GOOGLE_HOST_URL = "accounts.google.com"
-    GOOGLE_AUTHSUB_BASE_PATH = "/ServiceLogin"
+    GOOGLE_AUTHSUB_BASE_PATH = "/"
     GOOGLE_AUTHSUB_REQUEST_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubRequest"
     GOOGLE_AUTHSUB_SESSION_TOKEN_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubSessionToken"
     GOOGLE_AUTHSUB_REVOKE_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubRevokeToken"
