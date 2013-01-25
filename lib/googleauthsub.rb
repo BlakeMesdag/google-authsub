@@ -31,11 +31,10 @@ require 'cgi'
 module GData
   
     GOOGLE_HOST_URL = "accounts.google.com"
-    GOOGLE_AUTHSUB_BASE_PATH = "/"
-    GOOGLE_AUTHSUB_REQUEST_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubRequest"
-    GOOGLE_AUTHSUB_SESSION_TOKEN_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubSessionToken"
-    GOOGLE_AUTHSUB_REVOKE_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubRevokeToken"
-    GOOGLE_AUTHSUB_TOKEN_INFO_PATH = GOOGLE_AUTHSUB_BASE_PATH + "/AuthSubTokenInfo"
+    GOOGLE_AUTHSUB_REQUEST_PATH = "/AuthSubRequest"
+    GOOGLE_AUTHSUB_SESSION_TOKEN_PATH = "/AuthSubSessionToken"
+    GOOGLE_AUTHSUB_REVOKE_PATH = "/AuthSubRevokeToken"
+    GOOGLE_AUTHSUB_TOKEN_INFO_PATH = "/AuthSubTokenInfo"
 
 class Error < Exception
 end
