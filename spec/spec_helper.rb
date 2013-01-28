@@ -9,10 +9,10 @@ INVALID_TOKEN = "CMSdfhfhfjsjskee__d"
 TOKEN = "CMScoaHmDxC80Y2pAg"
 SESSION_TOKEN ="CMScoaHmDxDM9dqPBA"
 
-AUTHSUB_REQUEST_URL = "https://www.google.com/accounts/AuthSubRequest"
-AUTHSUB_SESSION_TOKEN_URL = "https://www.google.com/accounts/AuthSubSessionToken"
-AUTHSUB_REVOKE_TOKEN_URL = "https://www.google.com/accounts/AuthSubRevokeToken"
-AUTHSUB_TOKEN_INFO_URL = "https://www.google.com/accounts/AuthSubTokenInfo"
+AUTHSUB_REQUEST_URL = "https://accounts.google.com/AuthSubRequest"
+AUTHSUB_SESSION_TOKEN_URL = "https://accounts.google.com/AuthSubSessionToken"
+AUTHSUB_REVOKE_TOKEN_URL = "https://accounts.google.com/AuthSubRevokeToken"
+AUTHSUB_TOKEN_INFO_URL = "https://accounts.google.com/AuthSubTokenInfo"
 
 module GData
   class GoogleAuthSub    

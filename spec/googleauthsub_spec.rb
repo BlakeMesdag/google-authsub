@@ -161,14 +161,14 @@ describe GoogleAuthSub do
     end
     
     it "should generate the correct signature" do
-      expected_sig = "GET #{@data_request_url} 1204942501 100000000000000"
+      expected_sig = "GET #{@data_request_url} 1204996501 100000000000000"
       sig = @authsub.auth_header(Net::HTTP::Get.new(@data_request_url), @data_request_url).match(/sig=\"([^\"]*)$/)[1]
       @public_key.public_decrypt(sig.unpack("m").join).should ==  OpenSSL::Digest::SHA1.new(expected_sig).hexdigest
     end
     
     it "should generate a correct authorization header when secure" do
       @authsub.auth_header(Net::HTTP::Get.new(@data_request_url), @data_request_url).should == 
-      "AuthSub token=\"CMScoaHmDxC80Y2pAg\" data=\"GET http://www.google.com/calendar/feeds/default/private/full 1204942501 100000000000000\" sig=\"5H44KRwb+B9dMraK0mxsVv3aSF+gCz1hz7FEMViYdl89rC/BXQkmW7Xb9/Xf\n226E5Q+RPtFd+DaK/mXFxtoOJBqlz7mZgV+QOrr/dxCM6HpjIpxF9Qxo9zCT\nKvz0IS4gxXCVMgEgJOdF3YjqZo2bMgiG/Wjm/774Yitkc2tKhL8=\n\" sigalg=\"rsa-sha1\""  
+      "AuthSub token=\"CMScoaHmDxC80Y2pAg\" data=\"GET http://www.google.com/calendar/feeds/default/private/full 1204996501 100000000000000\" sig=\"aVyTV9ctcptjVLLelTLmf/UbVUSrfHL3VjE4dDDGrMxFRfLyKC7NBm/zVP8z\nP3Bh7ZJd58CLs9f8NxdIPSsuZg6HClVjfGAskSWNgwtSpjfE7A1fzbBKGwBu\nG6akHJhrgyPKxeoGEDMzdlvbs6zBCytdoPEHDcY0IrP1Sv47L1Y=\n\" sigalg=\"rsa-sha1\""
     end
     
   end   
@@ -209,7 +209,7 @@ describe GoogleAuthSub do
     end
     
     it "should make request to correct url" do
-      @authsub.request_session_token.should be true
+      @authsub.request_session_token.should eq "CMScoaHmDxDM9dqPBA"
     end
 
   end
