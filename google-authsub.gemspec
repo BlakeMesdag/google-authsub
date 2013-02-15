@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{google-authsub}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
   s.authors = ["Stuart Coyle", "Jesse Storimer"]
   s.summary = "A ruby implementation of Google Authentication for Web Applications API"  
   s.description = "GoogleAuthSub provides the Google Authentications for Web Applications API."  
